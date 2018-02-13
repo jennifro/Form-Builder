@@ -36,14 +36,15 @@ export const getJSON = (formInput) => {
 }
 
 // reducers
-function viewQuestions(state = [], action) {
+function retrieveQuestions(state = [], action) {
   switch (action.type) {
     case 'ADD_FORM_QUESTION':
       return [
         ...state, 
         {
-          id: action.id,
-          text: action.text,
+          questionId: action.id,
+          questionText: action.text,
+          questionType: action.questionType,
           subInput: action.subInput
         }
       ];
@@ -64,6 +65,8 @@ function handleQuestion(state = [], action='ADD_FORM_QUESTION') {
         subInput: action.subInput
       }
     ];
+  } else {
+    return state;
   }
 }
 
@@ -85,7 +88,7 @@ function jsonifyForm(state, action='GET_JSON') {
 
 
 export const formBuilder = combineReducers({
-  viewQuestions,
+  retrieveQuestions,
   handleQuestion,
   viewTab
 })
