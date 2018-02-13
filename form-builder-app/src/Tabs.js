@@ -1,19 +1,25 @@
 import React, { Component } from 'react';
 import { Tabs, Tab } from 'react-bootstrap';
 
-export const TabTitles = ['Create', 'Preview', 'Export']
+const TabTitles = ['Create', 'Preview', 'Export']
 
-export class FormTabs extends Component {
-  render() {
+export default function FormTabs (
+  create,
+  preview,
+  jsonText
+) {
+
     return (
-      <Tabs>
-        { this.props.tabTitles.map((pageTitle, key) => { 
-          return ( 
-            <Tab title={pageTitle} eventKey={key}> 
-              {pageTitle}
-            </Tab>
-        )})}
+      <Tabs id='form-tab-options' animation >
+        <Tab title='Create' eventKey='Create'> 
+          {create}
+        </Tab>
+        <Tab title='Preview' eventKey='Preview'> 
+          {preview}
+        </Tab>
+        <Tab title='Export' eventKey='Export'> 
+          {jsonText}
+        </Tab>        
       </Tabs>
-    )
-  }
+    );
 }

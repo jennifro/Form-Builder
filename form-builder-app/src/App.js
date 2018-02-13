@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
-import { FormTabs, TabTitles } from './Tabs.js';
+import { createStore } from 'redux';
+import { formBuilder } from './reducers';
+import CreateForm from './Input.js'
+import FormTabs from './Tabs.js';
+
 
 import './App.css';
 
+let store = createStore(formBuilder);
 
 class App extends Component {
   render() {
@@ -11,7 +16,7 @@ class App extends Component {
         <header className="app-title">
           <h1 className="h1-title">Form Builder</h1>
         </header>
-        <FormTabs tabTitles={TabTitles} />
+        <FormTabs  createChild={ <CreateForm /> } />
       </div>
     );
   }
